@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from django.shortcuts import HttpResponse
-import time
-
+from .tasks import waiting_seconds
 
 def task(request):
-    time.sleep(10)
+    for i in range(1, 10):
+        waiting_seconds.delay(i)
     return HttpResponse("The task is run successfully!")
