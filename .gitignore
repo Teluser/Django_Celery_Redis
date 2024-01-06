@@ -1,0 +1,3 @@
+venv_django/*
+**/__pycache__/**
+.idea/
