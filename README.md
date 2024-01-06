@@ -2,11 +2,9 @@
 Simple demo, how to integrate Django with celery and use Redis as message broker to distribute background tasks
 
 ## Workflow 
-Django app send tasks -> Message Broker (Redis, RabbitMQ, AWS SQS) -> Celery worker run task
+Django app send tasks -> Message Broker (Redis, RabbitMQ, AWS SQS) -> Celery get task from message broker and execute it
 
-Celery workers get task from message broker and execute it.
-
-For more details information, read this article
+For more details information, read [this article](https://realpython.com/asynchronous-tasks-with-django-and-celery/)    
 
 In this project:
 - Use Redis as message broker
