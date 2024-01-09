@@ -124,6 +124,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 CELERY_BROKER_URL = "redis://default:mkmJ3gp1JDdB1KDGFDBbDC4I5AOnJhIG@viaduct.proxy.rlwy.net:17008"
 CELERY_RESULT_BACKEND = "redis://default:mkmJ3gp1JDdB1KDGFDBbDC4I5AOnJhIG@viaduct.proxy.rlwy.net:17008"
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
@@ -131,4 +133,59 @@ CELERY_ACKS_LATE = True
 CELERY_TASK_REJECT_ON_WORKER_LOST = True
 CELERY_BROKER_TRANSPORT_OPTIONS = {
     'visibility_timeout': 300,  # Set the visibility timeout to 5 minutes
+}
+
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[%(name)12s] [%(levelname)s] [%(asctime)s] %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "django": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "/debug/django.log",
+            "formatter": "verbose",
+        },
+        "celery": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "/debug/celery.log",
+            "formatter": "verbose",
+        }
+    },
+
+    "loggers": {
+        "django": {
+            "handlers": ["django", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "django.request": {
+            "handlers": ["django", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "celery": {
+            "handlers": ["celery", "console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "celery.custom.log": {
+            "handlers": ["celery", "console"],
+            "level": "DEBUG",
+            "propagate": False,
+        }
+    },
 }
