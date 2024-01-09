@@ -39,6 +39,13 @@ In this project:
    **Note**:
    - In terminal run django `python manage.py runserver` -> only show log web server   
    - Log background tasks executed by Celery workers show in the terminal which run `celery worker` command
+
+## User data for deploy EC2 AWS
+```
+sudo yum install git python-pip
+cd Django_Celery_Redis
+pip install -r requirements.txt
+```
 ## Reference
 
 [1.Asynchronous Tasks With Django and Celery - Real Python](https://realpython.com/asynchronous-tasks-with-django-and-celery/)  
