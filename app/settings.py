@@ -124,5 +124,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CELERY_BROKER_URL = "redis://default:Nm5eea2PFJJOh6Ij1hl3DNgAFEChpLID@viaduct.proxy.rlwy.net:45666"
-CELERY_RESULT_BACKEND = "redis://default:Nm5eea2PFJJOh6Ij1hl3DNgAFEChpLID@viaduct.proxy.rlwy.net:45666"
+CELERY_BROKER_URL = "redis://default:mkmJ3gp1JDdB1KDGFDBbDC4I5AOnJhIG@viaduct.proxy.rlwy.net:17008"
+CELERY_RESULT_BACKEND = "redis://default:mkmJ3gp1JDdB1KDGFDBbDC4I5AOnJhIG@viaduct.proxy.rlwy.net:17008"
+CELERY_ACKS_LATE = True
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
