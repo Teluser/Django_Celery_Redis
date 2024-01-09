@@ -126,5 +126,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = "redis://default:mkmJ3gp1JDdB1KDGFDBbDC4I5AOnJhIG@viaduct.proxy.rlwy.net:17008"
 CELERY_RESULT_BACKEND = "redis://default:mkmJ3gp1JDdB1KDGFDBbDC4I5AOnJhIG@viaduct.proxy.rlwy.net:17008"
-CELERY_ACKS_LATE = True
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_ACKS_LATE = True
+CELERY_TASK_REJECT_ON_WORKER_LOST = True
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    'visibility_timeout': 300,  # Set the visibility timeout to 5 minutes
+}
